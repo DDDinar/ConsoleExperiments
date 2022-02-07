@@ -10,9 +10,12 @@ namespace ConsoleExperiments
             CoconaApp.Run<Program>(args);
         }
 
-        public void Hello(bool toUpperCase, string name)
+        [Command(Description = "This is a sample application")]
+        public void Hello(
+            [Option('u', Description = "Print a name converted to upper-case.")] bool toUpperCase,
+            [Argument(Description = "Your name")] string name)
         {
-            Console.WriteLine($"Hello {(toUpperCase ? name.ToUpper() : name)}");
+            Console.WriteLine($"Hello {(toUpperCase ? name.ToUpper() : name)}!");
         }
     }
 }
